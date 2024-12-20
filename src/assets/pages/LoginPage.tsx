@@ -8,13 +8,15 @@ import image1 from '/src/images/FlexCar.png';
 import supabase from '../../supabase/supabase';
 
 const LoginPage: React.FC = () => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState('');
+	const [email, setEmail] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
+	const [loading, setLoading] = useState<boolean>(false);
+	const [error, setError] = useState<string>('');
 	const navigate = useNavigate();
 
-	const handleLogin = async (e) => {
+	const handleLogin = async (
+		e: React.FormEvent<HTMLFormElement>
+	): Promise<void> => {
 		e.preventDefault();
 		setError('');
 
@@ -25,6 +27,7 @@ const LoginPage: React.FC = () => {
 
 		if (error) {
 			setError(error.message);
+			toast.error('Invalid email or password. Please try again!');
 		} else {
 			navigate('/');
 		}

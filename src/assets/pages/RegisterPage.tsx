@@ -1,21 +1,21 @@
 //hooks
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-//notification
-import { toast } from 'react-toastify';
 //images
 import image1 from '/src/images/FlexCar.png';
 //supabase
 import supabase from '../../supabase/supabase';
 
 const RegisterPage: React.FC = () => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState('');
+	const [email, setEmail] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
+	const [loading, setLoading] = useState<boolean>(false);
+	const [error, setError] = useState<string>('');
 	const navigate = useNavigate();
 
-	const handleRegister = async (e) => {
+	const handleRegister = async (
+		e: React.FormEvent<HTMLFormElement>
+	): Promise<void> => {
 		e.preventDefault();
 		setError('');
 
